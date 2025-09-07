@@ -124,14 +124,7 @@ require_once 'includes/header.php';
                         </button>
                     </form>
                     
-                    <!-- Demo Accounts Info -->
-                    <div class="alert alert-info" role="alert">
-                        <h6 class="alert-heading"><i class="bi bi-info-circle"></i> Demo Accounts</h6>
-                        <small>
-                            <strong>Admin:</strong> admin / admin123<br>
-                            <strong>Customer:</strong> Create a new account below
-                        </small>
-                    </div>
+                    
                     
                     <!-- Divider -->
                     <div class="text-center my-4">

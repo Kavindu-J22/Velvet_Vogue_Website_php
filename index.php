@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Homepage for Velvet Vogue E-Commerce Website
  * Displays hero section, featured products, and categories
@@ -49,35 +50,35 @@ $categories = getAllCategories();
                 <p class="lead text-muted">Find exactly what you're looking for</p>
             </div>
         </div>
-        
+
         <div class="row g-4">
             <?php foreach ($categories as $category): ?>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="text-center">
-                        <a href="category.php?id=<?php echo $category['category_id']; ?>" 
-                           class="text-decoration-none">
+                        <a href="category.php?id=<?php echo $category['category_id']; ?>"
+                            class="text-decoration-none">
                             <div class="category-card p-4 border rounded-3 shadow-sm h-100 
                                         d-flex flex-column align-items-center justify-content-center
                                         transition-all hover-shadow">
                                 <div class="category-icon mb-3">
                                     <?php
-                                    // Simple icon mapping based on category name
+                                    // Simple icon mapping based on category name with valid Bootstrap icons
                                     $iconClass = 'bi-bag';
                                     switch (strtolower($category['category_name'])) {
                                         case 'men':
-                                            $iconClass = 'bi-person';
+                                            $iconClass = 'bi-person-fill';
                                             break;
                                         case 'women':
-                                            $iconClass = 'bi-person-dress';
+                                            $iconClass = 'bi-person-hearts';
                                             break;
                                         case 'formal wear':
-                                            $iconClass = 'bi-suit-spade';
+                                            $iconClass = 'bi-briefcase-fill';
                                             break;
                                         case 'casual wear':
-                                            $iconClass = 'bi-shirt';
+                                            $iconClass = 'bi-house-heart-fill';
                                             break;
                                         case 'accessories':
-                                            $iconClass = 'bi-handbag';
+                                            $iconClass = 'bi-handbag-fill';
                                             break;
                                     }
                                     ?>
@@ -104,7 +105,7 @@ $categories = getAllCategories();
                 <p class="lead text-muted">Discover our latest and most popular items</p>
             </div>
         </div>
-        
+
         <?php if (!empty($featuredProducts)): ?>
             <div class="row g-4">
                 <?php foreach ($featuredProducts as $product): ?>
@@ -112,15 +113,15 @@ $categories = getAllCategories();
                         <div class="product-card card h-100 shadow-sm">
                             <div class="position-relative">
                                 <?php if ($product['image_path'] && file_exists('uploads/' . $product['image_path'])): ?>
-                                    <img src="uploads/<?php echo htmlspecialchars($product['image_path']); ?>" 
-                                         class="product-image card-img-top" 
-                                         alt="<?php echo htmlspecialchars($product['product_name']); ?>">
+                                    <img src="uploads/<?php echo htmlspecialchars($product['image_path']); ?>"
+                                        class="product-image card-img-top"
+                                        alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                                 <?php else: ?>
                                     <div class="product-image card-img-top d-flex align-items-center justify-content-center bg-light">
                                         <i class="bi bi-image display-4 text-muted"></i>
                                     </div>
                                 <?php endif; ?>
-                                
+
                                 <?php if ($product['stock_quantity'] <= 5 && $product['stock_quantity'] > 0): ?>
                                     <span class="badge bg-warning position-absolute top-0 end-0 m-2">
                                         Low Stock
@@ -131,32 +132,32 @@ $categories = getAllCategories();
                                     </span>
                                 <?php endif; ?>
                             </div>
-                            
+
                             <div class="product-card-body card-body d-flex flex-column">
                                 <div class="product-category text-muted small mb-1">
                                     <?php echo htmlspecialchars($product['category_name']); ?>
                                 </div>
-                                
+
                                 <h5 class="product-title card-title">
-                                    <a href="product-detail.php?id=<?php echo $product['product_id']; ?>" 
-                                       class="text-decoration-none text-dark">
+                                    <a href="product-detail.php?id=<?php echo $product['product_id']; ?>"
+                                        class="text-decoration-none text-dark">
                                         <?php echo htmlspecialchars($product['product_name']); ?>
                                     </a>
                                 </h5>
-                                
+
                                 <p class="card-text text-muted small flex-grow-1">
                                     <?php echo htmlspecialchars(substr($product['description'], 0, 100)) . '...'; ?>
                                 </p>
-                                
+
                                 <div class="d-flex justify-content-between align-items-center mt-auto">
                                     <div class="product-price h5 mb-0 text-primary-custom fw-bold">
                                         $<?php echo number_format($product['price'], 2); ?>
                                     </div>
-                                    
+
                                     <?php if ($product['stock_quantity'] > 0): ?>
                                         <?php if (isLoggedIn()): ?>
-                                            <button class="btn btn-primary-custom btn-sm add-to-cart-btn" 
-                                                    data-product-id="<?php echo $product['product_id']; ?>">
+                                            <button class="btn btn-primary-custom btn-sm add-to-cart-btn"
+                                                data-product-id="<?php echo $product['product_id']; ?>">
                                                 <i class="bi bi-cart-plus"></i> Add to Cart
                                             </button>
                                         <?php else: ?>
@@ -175,7 +176,7 @@ $categories = getAllCategories();
                     </div>
                 <?php endforeach; ?>
             </div>
-            
+
             <div class="text-center mt-5">
                 <a href="products.php" class="btn btn-primary-custom btn-lg">
                     <i class="bi bi-grid"></i> View All Products
